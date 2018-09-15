@@ -37,5 +37,12 @@ public @interface EntityInfo {
      */
     String note() default "";
 
-    
+    /**
+     * 属性为对象，记录对象完整路径.
+     *
+     * @return
+     */
+    String clazz() default "";
+
+
 }
