@@ -1,5 +1,6 @@
 package com.wolf89.wolf.core.dao;
 
+import com.wolf89.wolf.core.entity.AbstractEntity;
 import com.wolf89.wolf.core.entity.EntityParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,7 @@ import javax.persistence.criteria.Root;
  * @param <T>
  * @author gaoweibing
  */
-public class AbstractEntityRepositoryImpl<T> {
+public class AbstractEntityRepositoryImpl<T extends AbstractEntity> {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractEntityRepositoryImpl.class);
 

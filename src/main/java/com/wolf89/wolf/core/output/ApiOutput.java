@@ -35,6 +35,8 @@ public class ApiOutput<T> implements Serializable {
 
         this.code = 200;
         this.success = true;
+        this.msg = "操作成功";
+
     }
 
     /**

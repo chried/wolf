@@ -33,12 +33,12 @@ public class ValidationInterceptor {
      * .. 表示“所有(包、参数)”的意思
      * </pre>
      *
-     * @param pjp 切入点
+     * @param pjp           切入点
      * @param bindingResult 拦截变量
      * @return 对象
      * @throws Throwable 异常
      */
-    @Around("execution(* com.pangu16.*.rest..*(..)) && args(.., bindingResult)")
+    @Around("execution(* com.wolf89.wolf.controller..*(..)) && args(.., bindingResult)")
     public Object doAround(ProceedingJoinPoint pjp, BindingResult bindingResult)
             throws Throwable {
 

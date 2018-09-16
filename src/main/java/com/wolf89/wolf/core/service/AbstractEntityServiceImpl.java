@@ -12,13 +12,14 @@ import javax.validation.ValidationException;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.UUID;
 
 /**
  * service实现.
  *
  * @author gaoweibing
  */
-public abstract class AbstractEntityServiceImpl<T extends AbstractEntity> implements AbstractEntityService<T> {
+public abstract class AbstractEntityServiceImpl<T extends AbstractEntity> implements AbstractEntityService<T>, AbstractService {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractEntityServiceImpl.class);
 
@@ -142,8 +143,22 @@ public abstract class AbstractEntityServiceImpl<T extends AbstractEntity> implem
     @Override
     public T add_(T t) {
 
-        t.setInsert_(LocalDateTime.now());
-        t.setUpdate_(t.getInsert_());
+        t.setId(UUID.randomUUID().toString());
+
+        /**
+         * 此处预防特殊处理.
+         * <pre>
+         *     例如，某个实体类的创建需要用到时间作为参数，跟其他数据同步。
+         * </pre>
+         */
+        if (t.getInsert_() == null) {
+            t.setInsert_(LocalDateTime.now());
+        }
+
+        if (t.getUpdate_() == null) {
+            t.setUpdate_(t.getInsert_());
+        }
+
         t.setStatus_(EntityParameter.ACTIVE);
 
         return this.getRepository().save(t);

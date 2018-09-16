@@ -10,7 +10,7 @@ import java.util.Collection;
  *
  * @author gaoweibing
  */
-public interface AbstractEntityService<T extends AbstractEntity> {
+public interface AbstractEntityService<T extends AbstractEntity> extends AbstractService {
 
     /**
      * 保存.
