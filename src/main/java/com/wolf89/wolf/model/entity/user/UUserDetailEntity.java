@@ -34,6 +34,7 @@ public class UUserDetailEntity extends AbstractEntity {
             )
     })
     @EntityInfo(name = "性别", value = "性别", clazz = "com.wolf89.wolf.core.entity.Type")
+    @Embedded
     private Type sex;
 
     @EntityInfo(name = "生日", value = "birthday")

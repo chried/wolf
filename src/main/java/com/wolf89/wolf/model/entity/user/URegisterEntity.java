@@ -45,6 +45,8 @@ public class URegisterEntity extends AbstractEntity {
                     name = "name", column = @Column(name = "r_validate_name", length = 50)
             )
     })
+    @Embedded
+    @EntityInfo(name = "验证", value = "validate")
     private Refer validate;
 
 

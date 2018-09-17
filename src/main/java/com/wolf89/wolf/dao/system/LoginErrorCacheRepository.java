@@ -9,4 +9,12 @@ import org.springframework.data.keyvalue.repository.KeyValueRepository;
  * @author gaoweibing
  */
 public interface LoginErrorCacheRepository extends KeyValueRepository<LoginErrorCache, String> {
+
+    /**
+     * 根据userId获取.
+     *
+     * @param userId 用户id.
+     * @return 错误信息.
+     */
+    LoginErrorCache findByUserId(String userId);
 }

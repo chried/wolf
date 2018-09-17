@@ -3,6 +3,7 @@ package com.wolf89.wolf.model.entity.system;
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,6 +15,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(schema = "wsystem", name = "S_VALIDATE")
+@AttributeOverride(
+        name = "id", column = @Column(name = "v_id", length = 40)
+)
 public class SValidateEntity extends AbstractEntity {
 
     @EntityInfo(name = "名称", value = "name", note = "记录名称，例如电话号，邮箱")

@@ -9,4 +9,12 @@ import com.wolf89.wolf.model.entity.user.URegisterEntity;
  * @author gaoweibing
  */
 public class URegisterEntityRepositoryImpl extends AbstractEntityRepositoryImpl<URegisterEntity> {
+
+    /**
+     * 主实体类.
+     */
+    @Override
+    protected Class<URegisterEntity> getClazz() {
+        return URegisterEntity.class;
+    }
 }

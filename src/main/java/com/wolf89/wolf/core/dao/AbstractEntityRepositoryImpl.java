@@ -4,6 +4,7 @@ import com.wolf89.wolf.core.entity.AbstractEntity;
 import com.wolf89.wolf.core.entity.EntityParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -18,7 +19,7 @@ import javax.persistence.criteria.Root;
  * @param <T>
  * @author gaoweibing
  */
-public class AbstractEntityRepositoryImpl<T extends AbstractEntity> {
+public abstract class AbstractEntityRepositoryImpl<T extends AbstractEntity> {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractEntityRepositoryImpl.class);
 
@@ -34,7 +35,7 @@ public class AbstractEntityRepositoryImpl<T extends AbstractEntity> {
     /**
      * 主实体类.
      */
-    protected Class<T> entityClass;
+    protected abstract Class<T> getClazz();
 
     /**
      * 根据ID查询.
@@ -44,6 +45,8 @@ public class AbstractEntityRepositoryImpl<T extends AbstractEntity> {
      */
     public T findById_(String id) {
 
+        Class<T> entityClass = this.getClazz();
+
         CriteriaBuilder builder = this.em.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(entityClass);
 
@@ -52,7 +55,7 @@ public class AbstractEntityRepositoryImpl<T extends AbstractEntity> {
 
         query.where(
                 builder.equal(root.get("id"), id),
-                builder.equal(root.get("extend").get("status_"), EntityParameter.ACTIVE)
+                builder.equal(root.get("status_"), EntityParameter.ACTIVE)
         );
 
         try {

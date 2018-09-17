@@ -1,5 +1,6 @@
 package com.wolf89.wolf.service.user.impl;
 
+import com.wolf89.wolf.core.entity.EntityParameter;
 import com.wolf89.wolf.core.output.ApiOutput;
 import com.wolf89.wolf.core.service.AbstractServiceImpl;
 import com.wolf89.wolf.dto.user.RegisterForm;
@@ -12,9 +13,11 @@ import com.wolf89.wolf.service.user.RegisterService;
 import com.wolf89.wolf.service.user.URegisterEntityService;
 import com.wolf89.wolf.service.user.UUserDetailEntityService;
 import com.wolf89.wolf.service.user.UUserEntityService;
+import com.wolf89.wolf.utils.LocalDateUtil;
 import com.wolf89.wolf.utils.SerialUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -97,9 +100,16 @@ public class RegisterServiceImpl extends AbstractServiceImpl implements Register
         // 创建注册表.
         URegisterEntity uRegisterEntity = new URegisterEntity();
 
-        BeanUtils.copyProperties(form, uRegisterEntity);
+        BeanUtils.copyProperties(form, uRegisterEntity, "password");
 
+        LocalDateTime now = LocalDateTime.now();
+
+        uRegisterEntity.setPassword(userEntity_.getPassword());
         uRegisterEntity.setId(userEntity_.getId());
+        uRegisterEntity.setInsert_(now);
+        uRegisterEntity.setUpdate_(now);
+        uRegisterEntity.setStatus_(EntityParameter.ACTIVE);
+
         this.uRegisterEntityService.save(uRegisterEntity);
 
         // 创建用户详情.
@@ -107,6 +117,9 @@ public class RegisterServiceImpl extends AbstractServiceImpl implements Register
 
         uUserDetailEntity.setId(userEntity_.getId());
         uUserDetailEntity.setNickname("新用户-" + SerialUtil.generator(8, SerialUtil.CHARS_ALL));
+        uUserDetailEntity.setInsert_(now);
+        uUserDetailEntity.setUpdate_(now);
+        uUserDetailEntity.setStatus_(EntityParameter.ACTIVE);
 
         this.uUserDetailEntityService.save(uUserDetailEntity);
 
@@ -124,17 +137,14 @@ public class RegisterServiceImpl extends AbstractServiceImpl implements Register
 
         // 获取当前时间.
         LocalDateTime now = LocalDateTime.now();
-        // 定义转换格式.
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
         UUserEntity userEntity = new UUserEntity();
-
         userEntity.setInsert_(now);
         userEntity.setUsername(form.getUsername());
         userEntity.setEmail(form.getEmail());
         userEntity.setPhone(form.getPhone());
         // md5加盐.
-        userEntity.setPassword(DigestUtils.md5Hex(form.getPassword() + formatter.format(now)));
+        userEntity.setPassword(DigestUtils.md5Hex(form.getPassword() + LocalDateUtil.convertDateToString(now, LocalDateUtil.yyyyMMddHHmmss)));
         userEntity.setLock(now);
 
         // 密码更新提醒为3个月周期.

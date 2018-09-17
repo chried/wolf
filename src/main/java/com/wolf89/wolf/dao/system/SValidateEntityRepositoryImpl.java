@@ -9,4 +9,12 @@ import com.wolf89.wolf.model.entity.system.SValidateEntity;
  * @author chried
  */
 public class SValidateEntityRepositoryImpl extends AbstractEntityRepositoryImpl<SValidateEntity> {
+
+    /**
+     * 主实体类.
+     */
+    @Override
+    protected Class<SValidateEntity> getClazz() {
+        return SValidateEntity.class;
+    }
 }

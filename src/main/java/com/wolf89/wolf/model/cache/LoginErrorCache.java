@@ -1,12 +1,16 @@
 package com.wolf89.wolf.model.cache;
 
 import com.wolf89.wolf.core.annotation.CacheInfo;
+import com.wolf89.wolf.core.cache.AbstractCache;
 import org.springframework.data.redis.core.RedisHash;
 
-import java.io.Serializable;
-
-@RedisHash
-public class LoginErrorCache implements Serializable {
+/**
+ * 登陆错误消息.
+ *
+ * @author chried
+ */
+@RedisHash(value = "wsystem.LoginErrorCache")
+public class LoginErrorCache extends AbstractCache {
 
     @CacheInfo(name = "用户id", value = "userId")
     private String userId;
