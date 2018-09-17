@@ -1,7 +1,7 @@
 package com.wolf89.wolf.dao.system;
 
 import com.wolf89.wolf.core.dao.AbstractEntityRepositoryImpl;
-import com.wolf89.wolf.entity.system.SValidateEntity;
+import com.wolf89.wolf.model.entity.system.SValidateEntity;
 
 /**
  * dao实现.

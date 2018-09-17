@@ -1,0 +1,83 @@
+package com.wolf89.wolf.dto.user;
+
+import com.wolf89.wolf.core.annotation.EntityInfo;
+
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+/**
+ * 登录.
+ *
+ * @author gaoweibing
+ */
+public class LoginForm implements Serializable {
+
+    @EntityInfo(name = "用户名", value = "name", note = "可以是电话、邮箱、用户名")
+    @NotNull(message = "用户名必填")
+    private String name;
+
+    @EntityInfo(name = "密码", value = "password")
+    @NotNull(message = "密码必填")
+    private String password;
+
+    @EntityInfo(name = "编码", value = "code")
+    @NotNull(message = "验证码必填")
+    private String code;
+
+    /**
+     * Gets the value of name.
+     *
+     * @return the value of name.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name.
+     * <p>You can use getName() to get the value of name.</p>
+     *
+     * @param name name.
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Gets the value of password.
+     *
+     * @return the value of password.
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets the password.
+     * <p>You can use getPassword() to get the value of password.</p>
+     *
+     * @param password password.
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * Gets the value of code.
+     *
+     * @return the value of code.
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the code.
+     * <p>You can use getCode() to get the value of code.</p>
+     *
+     * @param code code.
+     */
+    public void setCode(String code) {
+        this.code = code;
+    }
+}

@@ -24,7 +24,7 @@ public class RegisterForm implements Serializable {
     @EntityInfo(name = "密码", value = "password")
     private String password;
 
-    @EntityInfo(name = "验证", value = "validate", clazz = "com.wolf89.wolf.entity.system.SValidateEntity")
+    @EntityInfo(name = "验证", value = "validate", clazz = "com.wolf89.wolf.model.entity.system.SValidateEntity")
     private Refer validate;
 
     /**

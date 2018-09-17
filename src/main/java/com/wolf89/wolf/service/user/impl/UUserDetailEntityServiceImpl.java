@@ -3,7 +3,7 @@ package com.wolf89.wolf.service.user.impl;
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
 import com.wolf89.wolf.core.service.AbstractEntityServiceImpl;
 import com.wolf89.wolf.dao.user.UUserDetailEntityRepository;
-import com.wolf89.wolf.entity.user.UUserDetailEntity;
+import com.wolf89.wolf.model.entity.user.UUserDetailEntity;
 import com.wolf89.wolf.service.user.UUserDetailEntityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,7 +1,7 @@
 package com.wolf89.wolf.dao.user;
 
 import com.wolf89.wolf.core.dao.AbstractEntityRepositoryImpl;
-import com.wolf89.wolf.entity.user.UUserEntity;
+import com.wolf89.wolf.model.entity.user.UUserEntity;
 
 /**
  * dao实现.

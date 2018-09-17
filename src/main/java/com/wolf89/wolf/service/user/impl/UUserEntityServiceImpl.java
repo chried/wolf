@@ -1,9 +1,10 @@
 package com.wolf89.wolf.service.user.impl;
 
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
+import com.wolf89.wolf.core.entity.EntityParameter;
 import com.wolf89.wolf.core.service.AbstractEntityServiceImpl;
 import com.wolf89.wolf.dao.user.UUserEntityRepository;
-import com.wolf89.wolf.entity.user.UUserEntity;
+import com.wolf89.wolf.model.entity.user.UUserEntity;
 import com.wolf89.wolf.service.user.UUserEntityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,5 +33,18 @@ public class UUserEntityServiceImpl extends AbstractEntityServiceImpl<UUserEntit
     public Class<UUserEntity> getClazz() {
         return UUserEntity.class;
     }
-    
+
+    /**
+     * 查询.
+     *
+     * @param name 可以是用户名、电话、邮箱.
+     * @return 用户信息.
+     */
+    @Override
+    public UUserEntity findByName(String name) {
+
+        LOG.info("获取用户,name=[{}]", name);
+
+        return this.userEntityRepository.findByName(name, EntityParameter.ACTIVE);
+    }
 }

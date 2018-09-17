@@ -3,7 +3,7 @@ package com.wolf89.wolf.service.system.impl;
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
 import com.wolf89.wolf.core.service.AbstractEntityServiceImpl;
 import com.wolf89.wolf.dao.system.SValidateEntityRepository;
-import com.wolf89.wolf.entity.system.SValidateEntity;
+import com.wolf89.wolf.model.entity.system.SValidateEntity;
 import com.wolf89.wolf.service.system.SValidateEntityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

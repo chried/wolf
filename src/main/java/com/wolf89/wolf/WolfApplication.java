@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.wolf89.wolf.core.dao"
 })
 @EntityScan(value = {
-        "com.wolf89.wolf.entity"
+        "com.wolf89.wolf.model.entity"
 })
 public class WolfApplication {
 

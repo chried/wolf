@@ -2,7 +2,13 @@ package com.wolf89.wolf.core.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.vladmihalcea.hibernate.type.array.IntArrayType;
+import com.vladmihalcea.hibernate.type.array.StringArrayType;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.vladmihalcea.hibernate.type.json.JsonNodeBinaryType;
 import com.wolf89.wolf.core.annotation.EntityInfo;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -16,6 +22,24 @@ import java.time.LocalDateTime;
  * @author chried
  */
 @MappedSuperclass
+@TypeDefs({
+        @TypeDef(
+                name = "string-array",
+                typeClass = StringArrayType.class
+        ),
+        @TypeDef(
+                name = "int-array",
+                typeClass = IntArrayType.class
+        ),
+        @TypeDef(
+                name = "jsonb",
+                typeClass = JsonBinaryType.class
+        ),
+        @TypeDef(
+                name = "jsonb-node",
+                typeClass = JsonNodeBinaryType.class
+        )
+})
 public abstract class AbstractEntity implements Serializable {
 
     @Id

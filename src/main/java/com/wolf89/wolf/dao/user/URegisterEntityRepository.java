@@ -1,14 +1,14 @@
 package com.wolf89.wolf.dao.user;
 
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
-import com.wolf89.wolf.model.entity.user.UUserDetailEntity;
+import com.wolf89.wolf.model.entity.user.URegisterEntity;
 import org.springframework.stereotype.Repository;
 
 /**
  * dao.
  *
- * @author chried
+ * @author gaoweibing
  */
 @Repository
-public interface UUserDetailEntityRepository extends AbstractEntityRepository<UUserDetailEntity> {
+public interface URegisterEntityRepository extends AbstractEntityRepository<URegisterEntity> {
 }

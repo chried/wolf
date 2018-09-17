@@ -1,45 +1,52 @@
-package com.wolf89.wolf.entity.user;
+package com.wolf89.wolf.model.entity.user;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
+import com.wolf89.wolf.core.entity.Refer;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.time.LocalDateTime;
+import javax.persistence.*;
 
 /**
- * 用户实体类.
+ * 注册表.
  *
- * @author chried
+ * @author gaoweibing
  */
 @Entity
-@Table(schema = "wuser", name = "U_USER")
-public class UUserEntity extends AbstractEntity {
+@Table(schema = "wuser", name = "U_REGISTER")
+@AttributeOverride(
+        name = "id", column = @Column(name = "r_id", length = 40)
+)
+public class URegisterEntity extends AbstractEntity {
 
     @Column(name = "u_username", length = 100)
     @EntityInfo(name = "用户名", value = "username")
     private String username;
 
     @Column(name = "u_password", length = 100)
-    @EntityInfo(name = "用户名", value = "password")
+    @EntityInfo(name = "密码", value = "password")
     private String password;
 
     @Column(name = "u_email", length = 100)
-    @EntityInfo(name = "用户名", value = "email")
+    @EntityInfo(name = "邮箱", value = "email")
     private String email;
 
     @Column(name = "u_phone", length = 20)
-    @EntityInfo(name = "用户名", value = "phone")
+    @EntityInfo(name = "电话", value = "phone")
     private String phone;
 
-    @Column(name = "u_lock")
-    @EntityInfo(name = "用户名", value = "lock")
-    private LocalDateTime lock;
+    @AttributeOverrides({
+            @AttributeOverride(
+                    name = "id", column = @Column(name = "r_validate_id", length = 40)
+            ),
+            @AttributeOverride(
+                    name = "code", column = @Column(name = "r_validate_code", length = 50)
+            ),
+            @AttributeOverride(
+                    name = "name", column = @Column(name = "r_validate_name", length = 50)
+            )
+    })
+    private Refer validate;
 
-    @Column(name = "u_expire")
-    @EntityInfo(name = "用户名", value = "expire")
-    private LocalDateTime expire;
 
     /**
      * Gets the value of username.
@@ -118,40 +125,21 @@ public class UUserEntity extends AbstractEntity {
     }
 
     /**
-     * Gets the value of lock.
+     * Gets the value of validate.
      *
-     * @return the value of lock.
+     * @return the value of validate.
      */
-    public LocalDateTime getLock() {
-        return lock;
+    public Refer getValidate() {
+        return validate;
     }
 
     /**
-     * Sets the lock.
-     * <p>You can use getLock() to get the value of lock.</p>
+     * Sets the validate.
+     * <p>You can use getValidate() to get the value of validate.</p>
      *
-     * @param lock lock.
+     * @param validate validate.
      */
-    public void setLock(LocalDateTime lock) {
-        this.lock = lock;
-    }
-
-    /**
-     * Gets the value of expire.
-     *
-     * @return the value of expire.
-     */
-    public LocalDateTime getExpire() {
-        return expire;
-    }
-
-    /**
-     * Sets the expire.
-     * <p>You can use getExpire() to get the value of expire.</p>
-     *
-     * @param expire expire.
-     */
-    public void setExpire(LocalDateTime expire) {
-        this.expire = expire;
+    public void setValidate(Refer validate) {
+        this.validate = validate;
     }
 }

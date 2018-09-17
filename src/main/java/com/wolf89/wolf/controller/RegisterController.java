@@ -2,6 +2,8 @@ package com.wolf89.wolf.controller;
 
 import com.wolf89.wolf.core.output.ApiOutput;
 import com.wolf89.wolf.dto.user.RegisterForm;
+import com.wolf89.wolf.service.user.RegisterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @author chried
  */
 @RestController
-@RequestMapping(value = "register")
+@RequestMapping(value = "rest/register")
 public class RegisterController {
+
+    @Autowired
+    private RegisterService registerService;
 
     /**
      * 注册用户.
@@ -25,7 +30,7 @@ public class RegisterController {
     @RequestMapping(value = "user")
     public ApiOutput<String> registerUser(@RequestBody @Validated RegisterForm form, BindingResult result) {
 
-        return null;
+        return registerService.registerUser(form);
     }
 
 }

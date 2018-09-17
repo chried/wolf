@@ -1,4 +1,4 @@
-package com.wolf89.wolf.entity.system;
+package com.wolf89.wolf.model.entity.system;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
