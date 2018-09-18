@@ -1,5 +1,6 @@
 package com.wolf89.wolf.model.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
 
@@ -38,10 +39,12 @@ public class UUserEntity extends AbstractEntity {
     private String phone;
 
     @Column(name = "u_lock")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @EntityInfo(name = "锁定时间", value = "lock")
     private LocalDateTime lock;
 
     @Column(name = "u_expire")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @EntityInfo(name = "密码过期时间", value = "expire")
     private LocalDateTime expire;
 
