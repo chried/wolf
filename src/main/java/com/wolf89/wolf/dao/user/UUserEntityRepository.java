@@ -3,6 +3,7 @@ package com.wolf89.wolf.dao.user;
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
 import com.wolf89.wolf.model.entity.user.UUserEntity;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -23,5 +24,5 @@ public interface UUserEntityRepository extends AbstractEntityRepository<UUserEnt
     @Query("SELECT U FROM UUserEntity  U " +
             "WHERE U.status_ = :status_" +
             " AND (U.phone = :name OR U.email = :name OR U.username = :name)")
-    UUserEntity findByName(String name, String status_);
+    UUserEntity findByName(@Param("name") String name, @Param("status_") String status_);
 }

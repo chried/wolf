@@ -1,13 +1,18 @@
-package com.wolf89.wolf.dao.system;
+package com.wolf89.wolf.cao.system;
 
 import com.wolf89.wolf.model.cache.LoginErrorCache;
 import org.springframework.data.keyvalue.repository.KeyValueRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 登录错误缓存dao.
  *
  * @author gaoweibing
  */
+@Repository
 public interface LoginErrorCacheRepository extends KeyValueRepository<LoginErrorCache, String> {
 
     /**

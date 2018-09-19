@@ -17,11 +17,11 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
         "com.wolf89.wolf.core.dao"
 })
 @EnableRedisRepositories(
-        basePackages = {"com.wolf89.wolf.model.cache"},
-        value = "com.wolf89.wolf.dao.system"
+        basePackages = {"com.wolf89.wolf.cao"}
 )
 @EntityScan(value = {
-        "com.wolf89.wolf.model.entity"
+        "com.wolf89.wolf.model.entity",
+        "com.wolf89.wolf.model.cache"
 })
 public class WolfApplication {
 

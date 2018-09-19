@@ -2,7 +2,7 @@ package com.wolf89.wolf.service.user.impl;
 
 import com.wolf89.wolf.core.output.ApiOutput;
 import com.wolf89.wolf.core.service.AbstractServiceImpl;
-import com.wolf89.wolf.dao.system.LoginErrorCacheRepository;
+import com.wolf89.wolf.cao.system.LoginErrorCacheRepository;
 import com.wolf89.wolf.dto.user.LoginForm;
 import com.wolf89.wolf.model.cache.LoginErrorCache;
 import com.wolf89.wolf.model.entity.user.UUserEntity;
@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.ValidationException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class LoginServiceImpl extends AbstractServiceImpl implements LoginService {
@@ -48,7 +49,7 @@ public class LoginServiceImpl extends AbstractServiceImpl implements LoginServic
         }
 
         // 锁定时间在当前时间之前，不允许登录.
-        if (userEntity.getLock().isBefore(LocalDateTime.now())) {
+        if (userEntity.getLock().isAfter(LocalDateTime.now())) {
             throw new ValidationException("用户被锁定");
         }
 

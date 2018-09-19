@@ -52,7 +52,7 @@ public abstract class AbstractEntity implements Serializable {
 
     @EntityInfo(name = "创建时间", value = "insert_")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "x_insert_")
+    @Column(name = "x_insert_", updatable = false)
     private LocalDateTime insert_;
 
     @EntityInfo(name = "更新时间", value = "update_")
