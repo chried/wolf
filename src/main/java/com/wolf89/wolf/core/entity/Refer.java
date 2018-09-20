@@ -15,6 +15,16 @@ public class Refer extends Type {
     @EntityInfo(name = "主键", value = "id")
     private String id;
 
+    public Refer() {
+
+    }
+
+    public Refer(String id, String code, String name) {
+        super(code, name);
+        this.id = id;
+
+    }
+
     /**
      * Gets the value of id.
      *

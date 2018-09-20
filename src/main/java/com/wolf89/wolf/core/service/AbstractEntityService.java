@@ -8,6 +8,21 @@ import java.util.Collection;
 /**
  * 父级service;
  *
+ * <pre>
+ *     规则定义如下：
+ *     1、如果查询单个对象，用find开头，如果返回内部对象方法后面加“_”，如果需要返回ApiOutput结构，那么不需要增加；
+ *     例如：SUserEntity findById_(String id);ApiOutput<SUserEntity> findById(String id);
+ *     2、查询多个对象，用query开头，后缀跟规则1一样。
+ *     3、定义规则:
+ *     <table>
+ *         <tr><td>方式</td><td>命名开头</td></tr>
+ *         <tr><td>删除</td><td>delete</td></tr>
+ *         <tr><td>单个查找</td><td>find</td></tr>
+ *         <tr><td>多个查找</td> <td>query</td></tr>
+ *         <tr><td>添加</td><td>add</td></tr>
+ *     </table>
+ * </pre>
+ *
  * @author gaoweibing
  */
 public interface AbstractEntityService<T extends AbstractEntity> extends AbstractService {

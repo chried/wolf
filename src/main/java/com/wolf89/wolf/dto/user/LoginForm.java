@@ -2,6 +2,7 @@ package com.wolf89.wolf.dto.user;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -12,17 +13,32 @@ import java.io.Serializable;
  */
 public class LoginForm implements Serializable {
 
+    /**
+     * 用户名.
+     */
     @EntityInfo(name = "用户名", value = "name", note = "可以是电话、邮箱、用户名")
     @NotNull(message = "用户名必填")
     private String name;
 
+    /**
+     * 密码.
+     */
     @EntityInfo(name = "密码", value = "password")
     @NotNull(message = "密码必填")
     private String password;
 
+    /**
+     * 编码.
+     */
     @EntityInfo(name = "编码", value = "code")
     @NotNull(message = "验证码必填")
     private String code;
+
+    /**
+     * 类型.
+     */
+    @EntityInfo(name = "类型", value = "type", note = "例如，网页(site)、ios,android")
+    private String type;
 
     /**
      * Gets the value of name.
@@ -79,5 +95,24 @@ public class LoginForm implements Serializable {
      */
     public void setCode(String code) {
         this.code = code;
+    }
+
+    /**
+     * Gets the value of type.
+     *
+     * @return the value of type.
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the type.
+     * <p>You can use getType() to get the value of type.</p>
+     *
+     * @param type type.
+     */
+    public void setType(String type) {
+        this.type = type;
     }
 }

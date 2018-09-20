@@ -3,6 +3,7 @@ package com.wolf89.wolf.model.entity.user;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
+import com.wolf89.wolf.core.entity.Refer;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -160,5 +161,9 @@ public class UUserEntity extends AbstractEntity {
      */
     public void setExpire(LocalDateTime expire) {
         this.expire = expire;
+    }
+
+    public Refer toRefer() {
+        return new Refer();
     }
 }

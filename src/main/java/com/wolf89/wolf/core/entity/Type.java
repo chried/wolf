@@ -19,6 +19,16 @@ public class Type implements Serializable {
     @EntityInfo(name = "名称", value = "name")
     private String name;
 
+    public Type() {
+
+    }
+
+    public Type(String code, String name) {
+
+        this.code = code;
+        this.name = name;
+    }
+
     /**
      * Gets the value of code.
      *
