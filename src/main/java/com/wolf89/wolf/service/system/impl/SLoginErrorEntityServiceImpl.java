@@ -1,7 +1,7 @@
 package com.wolf89.wolf.service.system.impl;
 
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
-import com.wolf89.wolf.core.entity.EntityParameter;
+import com.wolf89.wolf.core.parameter.EntityParameter;
 import com.wolf89.wolf.core.service.AbstractEntityServiceImpl;
 import com.wolf89.wolf.dao.system.SLoginErrorEntityRepository;
 import com.wolf89.wolf.model.entity.system.SLoginErrorEntity;

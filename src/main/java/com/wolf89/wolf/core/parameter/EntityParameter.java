@@ -1,4 +1,4 @@
-package com.wolf89.wolf.core.entity;
+package com.wolf89.wolf.core.parameter;
 
 /**
  * 定义实体参数.

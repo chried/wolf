@@ -1,10 +1,9 @@
 package com.wolf89.wolf.core.dao;
 
 import com.wolf89.wolf.core.entity.AbstractEntity;
-import com.wolf89.wolf.core.entity.EntityParameter;
+import com.wolf89.wolf.core.parameter.EntityParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

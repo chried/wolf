@@ -2,7 +2,7 @@ package com.wolf89.wolf.core.service;
 
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
 import com.wolf89.wolf.core.entity.AbstractEntity;
-import com.wolf89.wolf.core.entity.EntityParameter;
+import com.wolf89.wolf.core.parameter.EntityParameter;
 import com.wolf89.wolf.core.output.ApiOutput;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

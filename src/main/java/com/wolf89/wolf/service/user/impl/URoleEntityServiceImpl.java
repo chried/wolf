@@ -1,7 +1,7 @@
 package com.wolf89.wolf.service.user.impl;
 
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
-import com.wolf89.wolf.core.entity.EntityParameter;
+import com.wolf89.wolf.core.parameter.EntityParameter;
 import com.wolf89.wolf.core.service.AbstractEntityServiceImpl;
 import com.wolf89.wolf.dao.user.URoleEntityRepository;
 import com.wolf89.wolf.model.entity.user.URoleEntity;

@@ -1,6 +1,6 @@
 package com.wolf89.wolf.service.user.impl;
 
-import com.wolf89.wolf.core.entity.EntityParameter;
+import com.wolf89.wolf.core.parameter.EntityParameter;
 import com.wolf89.wolf.core.output.ApiOutput;
 import com.wolf89.wolf.core.service.AbstractServiceImpl;
 import com.wolf89.wolf.dto.user.RegisterForm;
@@ -17,7 +17,6 @@ import com.wolf89.wolf.utils.LocalDateUtil;
 import com.wolf89.wolf.utils.SerialUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -27,7 +26,6 @@ import org.springframework.stereotype.Service;
 import javax.validation.ValidationException;
 import java.time.LocalDateTime;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 
 /**
  * 注册实现.
