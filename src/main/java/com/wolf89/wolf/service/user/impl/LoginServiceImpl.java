@@ -7,12 +7,10 @@ import com.wolf89.wolf.dto.user.LoginForm;
 import com.wolf89.wolf.dto.user.LoginResult;
 import com.wolf89.wolf.model.entity.system.SLoginErrorEntity;
 import com.wolf89.wolf.model.entity.user.URoleEntity;
+import com.wolf89.wolf.model.entity.user.UUserDetailEntity;
 import com.wolf89.wolf.model.entity.user.UUserEntity;
 import com.wolf89.wolf.service.system.SLoginErrorEntityService;
-import com.wolf89.wolf.service.user.LoginService;
-import com.wolf89.wolf.service.user.URoleEntityService;
-import com.wolf89.wolf.service.user.UUserEntityService;
-import com.wolf89.wolf.service.user.UUserRoleEntityService;
+import com.wolf89.wolf.service.user.*;
 import com.wolf89.wolf.utils.LocalDateUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -43,6 +41,9 @@ public class LoginServiceImpl extends AbstractServiceImpl implements LoginServic
 
     @Autowired
     private UUserRoleEntityService uUserRoleEntityService;
+
+    @Autowired
+    private UUserDetailEntityService uUserDetailEntityService;
 
     /**
      * 用户登录.
@@ -104,12 +105,25 @@ public class LoginServiceImpl extends AbstractServiceImpl implements LoginServic
         // 登录成功之后删除错误信息.
         this.sLoginErrorEntityService.deleteByUserId(userEntity.getId());
 
+        // 查询详情.
+
+        UUserDetailEntity uUserDetailEntity = this.uUserDetailEntityService.get_(userEntity.getId());
+
+        Refer userRefer = new Refer();
+
+        if (uUserDetailEntity != null) {
+            userRefer.setName(uUserDetailEntity.getNickname());
+        }
+
         LoginResult loginResult = new LoginResult();
 
         // 设置token.
         loginResult.setToken(UUID.randomUUID().toString());
 
-        loginResult.setUser(userEntity.toRefer());
+        userRefer.setId(userEntity.getId());
+        userRefer.setCode(userEntity.getCode());
+
+        loginResult.setUser(userRefer);
 
         // 获取角色信息.
         List<URoleEntity> uRoleEntityList = this.uRoleEntityService.queryByUserId_(userEntity.getId());

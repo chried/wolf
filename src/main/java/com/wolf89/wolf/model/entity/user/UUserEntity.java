@@ -31,6 +31,10 @@ public class UUserEntity extends AbstractEntity {
     @EntityInfo(name = "密码", value = "password")
     private String password;
 
+    @Column(name = "u_code", length = 20)
+    @EntityInfo(name = "编码", value = "code", note = "系统自动生成")
+    private String code;
+
     @Column(name = "u_email", length = 100)
     @EntityInfo(name = "邮箱", value = "email")
     private String email;
@@ -163,7 +167,22 @@ public class UUserEntity extends AbstractEntity {
         this.expire = expire;
     }
 
-    public Refer toRefer() {
-        return new Refer();
+    /**
+     * Gets the value of code.
+     *
+     * @return the value of code.
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the code.
+     * <p>You can use getCode() to get the value of code.</p>
+     *
+     * @param code code.
+     */
+    public void setCode(String code) {
+        this.code = code;
     }
 }

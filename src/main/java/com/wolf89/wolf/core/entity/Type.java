@@ -13,9 +13,15 @@ import java.io.Serializable;
 @MappedSuperclass
 public class Type implements Serializable {
 
+    /**
+     * 编码.
+     */
     @EntityInfo(name = "编码", value = "code")
     private String code;
 
+    /**
+     * 名称.
+     */
     @EntityInfo(name = "名称", value = "name")
     private String name;
 

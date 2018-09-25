@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -26,6 +27,7 @@ public interface URoleEntityRepository extends AbstractEntityRepository<URoleEnt
             " R.id = U.roleId " +
             " AND U.userId = :userId " +
             " AND R.status_ = :status_ " +
-            " AND U.status_ = :status_")
-    List<URoleEntity> queryByUserId(@Param("userId") String userId, @Param("status_") String status_);
+            " AND U.status_ = :status_" +
+            " AND U.end >= :now")
+    List<URoleEntity> queryByUserId(@Param("userId") String userId, @Param("now") LocalDateTime now, @Param("status_") String status_);
 }

@@ -12,6 +12,9 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class Refer extends Type {
 
+    /**
+     * 主键.
+     */
     @EntityInfo(name = "主键", value = "id")
     private String id;
 

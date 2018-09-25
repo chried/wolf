@@ -52,6 +52,6 @@ public class IndexController extends AbstractController {
 
         this.sLoginInfoEntityService.save(sLoginInfoEntity);
 
-        return ApiOutput.of("登录成功");
+        return ApiOutput.of(loginResult);
     }
 }

@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -47,6 +48,6 @@ public class URoleEntityServiceImpl extends AbstractEntityServiceImpl<URoleEntit
 
         LOG.info("根据用户获取,userId=[{}]", userId);
 
-        return this.uRoleEntityRepository.queryByUserId(userId, EntityParameter.ACTIVE);
+        return this.uRoleEntityRepository.queryByUserId(userId, LocalDateTime.now(), EntityParameter.ACTIVE);
     }
 }

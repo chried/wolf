@@ -46,7 +46,7 @@ public class ApiOutput<T> implements Serializable {
      * @param <S>  泛型.
      * @return 泛型.
      */
-    public static <S> ApiOutput of(S data) {
+    public static <S> ApiOutput<S> of(S data) {
 
         ApiOutput<S> apiOutput = new ApiOutput();
 
