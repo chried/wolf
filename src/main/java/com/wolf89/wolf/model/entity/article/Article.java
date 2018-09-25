@@ -3,8 +3,8 @@ package com.wolf89.wolf.model.entity.article;
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
 import com.wolf89.wolf.core.entity.Refer;
+import com.wolf89.wolf.core.entity.Type;
 import com.wolf89.wolf.core.entity.Value;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -26,6 +26,13 @@ public abstract class Article extends AbstractEntity {
     @Column(name = "a_subtitle", length = 50)
     private String subtitle;
 
+    @EntityInfo(name = "分类", value = "type", clazz = "com.wolf89.wolf.core.entity.Type")
+    @AttributeOverrides(value = {
+            @AttributeOverride(name = "code", column = @Column(name = "a_type_code")),
+            @AttributeOverride(name = "name", column = @Column(name = "a_type_name"))
+    })
+    private Type type;
+
     @EntityInfo(name = "作者", value = "author")
     @AttributeOverrides(value = {
             @AttributeOverride(name = "id", column = @Column(name = "a_author_id")),
@@ -34,7 +41,7 @@ public abstract class Article extends AbstractEntity {
     })
     private Refer author;
 
-    @Type(type = "jsonb")
+    @org.hibernate.annotations.Type(type = "jsonb")
     @Column(name = "a_tags")
     @EntityInfo(name = "标签", value = "tags", clazz = "java.util.List")
     private List<Value> tags;
@@ -150,5 +157,43 @@ public abstract class Article extends AbstractEntity {
      */
     public void setContent(String content) {
         this.content = content;
+    }
+
+    /**
+     * Gets the value of type.
+     *
+     * @return the value of type.
+     */
+    public Type getType() {
+        return type;
+    }
+
+    /**
+     * Sets the type.
+     * <p>You can use getType() to get the value of type.</p>
+     *
+     * @param type type.
+     */
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    /**
+     * Gets the value of control.
+     *
+     * @return the value of control.
+     */
+    public int getControl() {
+        return control;
+    }
+
+    /**
+     * Sets the control.
+     * <p>You can use getControl() to get the value of control.</p>
+     *
+     * @param control control.
+     */
+    public void setControl(int control) {
+        this.control = control;
     }
 }
