@@ -15,5 +15,4 @@ import javax.persistence.Table;
 @AttributeOverride(name = "id", column = @Column(name = "ea_id", length = 40, updatable = false))
 public class AEArticleEntity extends Article {
 
-
 }
