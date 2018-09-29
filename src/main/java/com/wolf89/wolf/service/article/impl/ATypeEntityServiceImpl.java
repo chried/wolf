@@ -1,5 +1,6 @@
 package com.wolf89.wolf.service.article.impl;
 
+import com.wolf89.wolf.core.dao.AbstractClassifyEntityRepository;
 import com.wolf89.wolf.core.dao.AbstractEntityRepository;
 import com.wolf89.wolf.core.service.AbstractClassifyEntityServiceImpl;
 import com.wolf89.wolf.dao.article.ATypeEntityRepository;
@@ -24,12 +25,12 @@ public class ATypeEntityServiceImpl extends AbstractClassifyEntityServiceImpl<AT
     private ATypeEntityRepository aTypeEntityRepository;
 
     @Override
-    public AbstractEntityRepository<ATypeEntity> getRepository() {
-        return aTypeEntityRepository;
+    public Class<ATypeEntity> getClazz() {
+        return ATypeEntity.class;
     }
 
     @Override
-    public Class<ATypeEntity> getClazz() {
-        return ATypeEntity.class;
+    public AbstractClassifyEntityRepository<ATypeEntity> getRepository() {
+        return aTypeEntityRepository;
     }
 }

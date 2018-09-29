@@ -4,6 +4,7 @@ import com.wolf89.wolf.core.entity.AbstractEntity;
 import com.wolf89.wolf.core.output.ApiOutput;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * 父级service;
@@ -167,4 +168,18 @@ public interface AbstractEntityService<T extends AbstractEntity> extends Abstrac
      * @return 对象.
      */
     ApiOutput<T> getOfEdit(String id);
+
+    /**
+     * 查询所有.
+     *
+     * @return 对象.
+     */
+    List<T> queryAll_();
+
+    /**
+     * 查询所有.
+     *
+     * @return 对象.
+     */
+    ApiOutput<List<T>> queryAll();
 }

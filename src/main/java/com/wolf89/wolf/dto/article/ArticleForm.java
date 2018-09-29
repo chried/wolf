@@ -1,4 +1,4 @@
-package com.wolf89.wolf.model.entity.article;
+package com.wolf89.wolf.dto.article;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
@@ -6,9 +6,8 @@ import com.wolf89.wolf.core.entity.Refer;
 import com.wolf89.wolf.core.entity.Type;
 import com.wolf89.wolf.core.entity.Value;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -16,56 +15,33 @@ import java.util.List;
  *
  * @author gaoweibing
  */
-public abstract class Article extends AbstractEntity {
+public class ArticleForm implements Serializable {
 
     @EntityInfo(name = "标题", value = "title")
-    @Column(name = "a_title", length = 100)
     private String title;
 
     @EntityInfo(name = "副标题", value = "subtitle")
-    @Column(name = "a_subtitle", length = 50)
     private String subtitle;
 
     @EntityInfo(name = "分类", value = "type", clazz = "com.wolf89.wolf.core.entity.Type")
-    @AttributeOverrides(value = {
-            @AttributeOverride(name = "code", column = @Column(name = "a_type_code")),
-            @AttributeOverride(name = "name", column = @Column(name = "a_type_name"))
-    })
     private Type type;
 
     @EntityInfo(name = "作者", value = "author")
-    @AttributeOverrides(value = {
-            @AttributeOverride(name = "id", column = @Column(name = "a_author_id")),
-            @AttributeOverride(name = "code", column = @Column(name = "a_author_code")),
-            @AttributeOverride(name = "name", column = @Column(name = "a_author_name"))
-    })
     private Refer author;
 
     @EntityInfo(name = "栏目", value = "column")
-    @AttributeOverrides(value = {
-            @AttributeOverride(name = "id", column = @Column(name = "a_column_id")),
-            @AttributeOverride(name = "code", column = @Column(name = "a_column_code")),
-            @AttributeOverride(name = "name", column = @Column(name = "a_column_name"))
-    })
     private Refer column;
 
     @org.hibernate.annotations.Type(type = "jsonb")
-    @Column(name = "a_tags")
     @EntityInfo(name = "标签", value = "tags", clazz = "java.util.List")
     private List<Value> tags;
 
     @EntityInfo(name = "内容", value = "content")
-    @Column(name = "a_content", columnDefinition = "text")
     private String content;
-
-    @EntityInfo(name = "是否公开", value = "open")
-    @Column(name = "a_open")
-    private boolean open;
 
     /**
      * <pre>
      *     1、草稿;
-     *     2、审核中;
      *     3、驳回;
      *     4、冻结;
      *     5、正常;
@@ -227,24 +203,5 @@ public abstract class Article extends AbstractEntity {
      */
     public void setColumn(Refer column) {
         this.column = column;
-    }
-
-    /**
-     * Gets the value of open.
-     *
-     * @return the value of open.
-     */
-    public boolean isOpen() {
-        return open;
-    }
-
-    /**
-     * Sets the open.
-     * <p>You can use getOpen() to get the value of open.</p>
-     *
-     * @param open open.
-     */
-    public void setOpen(boolean open) {
-        this.open = open;
     }
 }

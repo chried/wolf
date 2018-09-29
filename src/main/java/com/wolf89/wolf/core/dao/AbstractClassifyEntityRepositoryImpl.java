@@ -24,6 +24,9 @@ public abstract class AbstractClassifyEntityRepositoryImpl<T extends AbstractCla
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractClassifyEntityRepositoryImpl.class);
 
+    @Override
+    protected abstract Class<T> getClazz();
+
     /**
      * 根据上级代码查询.
      *

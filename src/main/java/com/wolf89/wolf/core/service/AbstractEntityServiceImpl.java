@@ -12,6 +12,7 @@ import javax.validation.ValidationException;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -344,5 +345,28 @@ public abstract class AbstractEntityServiceImpl<T extends AbstractEntity> implem
 
         return ApiOutput.of("删除成功");
 
+    }
+
+    /**
+     * 查询所有.
+     *
+     * @return 对象.
+     */
+    @Override
+    public List<T> queryAll_() {
+
+        return this.getRepository().findAll();
+
+    }
+
+    /**
+     * 查询所有.
+     *
+     * @return 对象.
+     */
+    @Override
+    public ApiOutput<List<T>> queryAll() {
+
+        return ApiOutput.of(this.queryAll_());
     }
 }

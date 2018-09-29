@@ -2,6 +2,7 @@ package com.wolf89.wolf.model.entity.system;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
+import com.wolf89.wolf.core.entity.Refer;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -172,5 +173,15 @@ public abstract class AbstractClassifyEntity extends AbstractEntity {
      */
     public void setNote(String note) {
         this.note = note;
+    }
+
+    /**
+     * 转换.
+     *
+     * @return refer.
+     */
+    public Refer toRefer() {
+
+        return new Refer(this.getId(), this.getCode(), this.getName());
     }
 }
