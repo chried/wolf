@@ -8,7 +8,7 @@ package com.wolf89.wolf.core.controller;
 import com.wolf89.wolf.core.entity.Refer;
 import com.wolf89.wolf.core.output.ApiOutput;
 import com.wolf89.wolf.core.service.AbstractClassifyEntityService;
-import com.wolf89.wolf.model.entity.system.AbstractClassifyEntity;
+import com.wolf89.wolf.core.entity.AbstractClassifyEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

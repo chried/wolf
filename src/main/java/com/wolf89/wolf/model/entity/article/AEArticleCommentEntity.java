@@ -5,10 +5,7 @@ import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.AbstractEntity;
 import com.wolf89.wolf.core.entity.Type;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
@@ -43,7 +40,11 @@ public class AEArticleCommentEntity extends AbstractEntity {
     private String original;
 
     @EntityInfo(name = "原文类型", value = "originalType", clazz = "com.wolf89.wolf.core.entity.Type", note = "英文、法文、德文")
-    @Column(name = "eac_original_type", columnDefinition = "text")
+    @Embedded
+    @AttributeOverrides(value = {
+            @AttributeOverride(name = "code", column = @Column(name = "eac_original_type_code")),
+            @AttributeOverride(name = "name", column = @Column(name = "eac_original_type_name"))
+    })
     private Type originalType;
 
     @EntityInfo(name = "中文", value = "chinese_", note = "翻译之后成中文")

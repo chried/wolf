@@ -1,7 +1,6 @@
 package com.wolf89.wolf.service.article.impl;
 
 import com.wolf89.wolf.core.dao.AbstractClassifyEntityRepository;
-import com.wolf89.wolf.core.dao.AbstractEntityRepository;
 import com.wolf89.wolf.core.service.AbstractClassifyEntityServiceImpl;
 import com.wolf89.wolf.dao.article.ATypeEntityRepository;
 import com.wolf89.wolf.model.entity.article.ATypeEntity;

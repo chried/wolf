@@ -1,7 +1,7 @@
 package com.wolf89.wolf.core.dao;
 
 import com.wolf89.wolf.core.parameter.EntityParameter;
-import com.wolf89.wolf.model.entity.system.AbstractClassifyEntity;
+import com.wolf89.wolf.core.entity.AbstractClassifyEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

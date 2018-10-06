@@ -1,6 +1,7 @@
 package com.wolf89.wolf.core.dao;
 
-import com.wolf89.wolf.model.entity.system.AbstractClassifyEntity;
+import com.wolf89.wolf.core.entity.AbstractClassifyEntity;
+import org.springframework.data.repository.NoRepositoryBean;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @param <T>
  * @author gaoweibing
  */
+@NoRepositoryBean
 public interface AbstractClassifyEntityRepository<T extends AbstractClassifyEntity> extends AbstractEntityRepository<T> {
 
     /**

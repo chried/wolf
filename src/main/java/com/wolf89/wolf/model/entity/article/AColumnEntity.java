@@ -30,6 +30,7 @@ public class AColumnEntity extends AbstractEntity {
             @AttributeOverride(name = "code", column = @Column(name = "c_author_code", updatable = false, length = 40)),
             @AttributeOverride(name = "name", column = @Column(name = "c_author_name", updatable = false, length = 40))
     })
+    @Embedded
     private Refer author;
 
     /**
@@ -187,5 +188,15 @@ public class AColumnEntity extends AbstractEntity {
      */
     public void setNote(String note) {
         this.note = note;
+    }
+
+    /**
+     * toRefer.
+     *
+     * @return
+     */
+    public Refer toRefer() {
+        
+        return new Refer(this.getId(), this.code, this.name);
     }
 }

@@ -1,6 +1,7 @@
 package com.wolf89.wolf.controller.site;
 
 import com.wolf89.wolf.core.controller.AbstractController;
+import com.wolf89.wolf.core.entity.Token;
 import com.wolf89.wolf.core.output.ApiOutput;
 import com.wolf89.wolf.dto.user.LoginForm;
 import com.wolf89.wolf.dto.user.LoginResult;
@@ -42,6 +43,17 @@ public class IndexController extends AbstractController {
 
         // 用户登录.
         LoginResult loginResult = this.loginService.loginByName(form).getData();
+
+        Token token = new Token();
+
+        token.setUser(loginResult.getUser());
+        token.setToken(loginResult.getToken());
+        token.setNickname(loginResult.getNickname());
+        token.setSignature(loginResult.getSignature());
+        token.setPortrait(loginResult.getPortrait());
+
+        // 存储token.
+        request.getSession().setAttribute(Token.TOKEN, token);
 
         // 记录登录信息.
         SLoginInfoEntity sLoginInfoEntity = new SLoginInfoEntity();

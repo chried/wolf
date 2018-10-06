@@ -2,15 +2,14 @@ package com.wolf89.wolf.core.entity;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
 
-import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 
 /**
  * 关联表使用.
  *
  * @author chried
  */
-@MappedSuperclass
-public class Refer extends Type {
+public class Refer implements Serializable {
 
     /**
      * 主键.
@@ -18,14 +17,27 @@ public class Refer extends Type {
     @EntityInfo(name = "主键", value = "id")
     private String id;
 
+    /**
+     * 编号.
+     */
+    @EntityInfo(name = "编号", value = "code")
+    private String code;
+
+    /**
+     * 名称.
+     */
+    @EntityInfo(name = "名称", value = "name")
+    private String name;
+
+
     public Refer() {
 
     }
 
     public Refer(String id, String code, String name) {
-        super(code, name);
+        this.code = code;
         this.id = id;
-
+        this.name = name;
     }
 
     /**
@@ -45,5 +57,43 @@ public class Refer extends Type {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    /**
+     * Gets the value of code.
+     *
+     * @return the value of code.
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the code.
+     * <p>You can use getCode() to get the value of code.</p>
+     *
+     * @param code code.
+     */
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    /**
+     * Gets the value of name.
+     *
+     * @return the value of name.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name.
+     * <p>You can use getName() to get the value of name.</p>
+     *
+     * @param name name.
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 }

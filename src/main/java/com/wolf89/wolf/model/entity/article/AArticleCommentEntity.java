@@ -2,7 +2,7 @@ package com.wolf89.wolf.model.entity.article;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
 import com.wolf89.wolf.core.entity.Refer;
-import com.wolf89.wolf.model.entity.system.AbstractClassifyEntity;
+import com.wolf89.wolf.core.entity.AbstractClassifyEntity;
 
 import javax.persistence.*;
 
@@ -22,33 +22,42 @@ public class AArticleCommentEntity extends AbstractClassifyEntity {
             @AttributeOverride(name = "code", column = @Column(name = "ac_user_code", length = 50, updatable = false)),
             @AttributeOverride(name = "name", column = @Column(name = "ac_user_name", length = 50, updatable = false))
     })
-    private Refer user;
+    @Embedded
+    private Refer user_;
 
     @EntityInfo(name = "关联文章", value = "articleId")
     @Column(name = "ac_articleId", length = 40, updatable = false)
     private String articleId;
+
+    @EntityInfo(name = "点赞数", value = "praise")
+    @Column(name = "ac_praise")
+    private int praise;
+
+    @EntityInfo(name = "踩数", value = "tread")
+    @Column(name = "ac_tread")
+    private int tread;
 
     @EntityInfo(name = "内容", value = "content")
     @Column(name = "ac_content", columnDefinition = "text")
     private String content;
 
     /**
-     * Gets the value of user.
+     * Gets the value of user_.
      *
-     * @return the value of user.
+     * @return the value of user_.
      */
-    public Refer getUser() {
-        return user;
+    public Refer getUser_() {
+        return user_;
     }
 
     /**
-     * Sets the user.
-     * <p>You can use getUser() to get the value of user.</p>
+     * Sets the user_.
+     * <p>You can use getUser_() to get the value of user_.</p>
      *
-     * @param user user.
+     * @param user_ user_.
      */
-    public void setUser(Refer user) {
-        this.user = user;
+    public void setUser_(Refer user_) {
+        this.user_ = user_;
     }
 
     /**
@@ -87,5 +96,43 @@ public class AArticleCommentEntity extends AbstractClassifyEntity {
      */
     public void setContent(String content) {
         this.content = content;
+    }
+
+    /**
+     * Gets the value of praise.
+     *
+     * @return the value of praise.
+     */
+    public int getPraise() {
+        return praise;
+    }
+
+    /**
+     * Sets the praise.
+     * <p>You can use getPraise() to get the value of praise.</p>
+     *
+     * @param praise praise.
+     */
+    public void setPraise(int praise) {
+        this.praise = praise;
+    }
+
+    /**
+     * Gets the value of tread.
+     *
+     * @return the value of tread.
+     */
+    public int getTread() {
+        return tread;
+    }
+
+    /**
+     * Sets the tread.
+     * <p>You can use getTread() to get the value of tread.</p>
+     *
+     * @param tread tread.
+     */
+    public void setTread(int tread) {
+        this.tread = tread;
     }
 }

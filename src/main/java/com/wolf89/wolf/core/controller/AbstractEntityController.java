@@ -40,6 +40,8 @@ public abstract class AbstractEntityController<T extends AbstractEntity> extends
 
         LOG.info("保存对象");
 
+        beforeSave_(t);
+
         return this.getService().save(t);
     }
 
@@ -98,6 +100,15 @@ public abstract class AbstractEntityController<T extends AbstractEntity> extends
         LOG.info("删除,id=[{}]", id);
 
         return this.getService().remove(id);
+
+    }
+
+    /**
+     * 提交前操作.
+     *
+     * @param t 对象.
+     */
+    protected void beforeSave_(T t) {
 
     }
 }

@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * 标签管理.
  */
 @Entity
-@Table(schema = "article", name = "A_TAG")
+@Table(schema = "warticle", name = "A_TAG")
 @AttributeOverride(name = "id", column = @Column(name = "t_id", length = 40))
 public class ATagEntity extends AbstractEntity {
 

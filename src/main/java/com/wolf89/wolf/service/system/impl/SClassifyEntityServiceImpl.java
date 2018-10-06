@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  *
  * @author gaoweibing
  */
-@Service
+@Service(value = "sclassifyEntityServiceImpl")
 public class SClassifyEntityServiceImpl extends AbstractClassifyEntityServiceImpl<SClassifyEntity> implements SClassifyEntityService {
 
     private static final Logger LOG = LoggerFactory.getLogger(SClassifyEntityServiceImpl.class);

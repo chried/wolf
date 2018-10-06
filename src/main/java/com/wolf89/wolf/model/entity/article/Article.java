@@ -6,9 +6,7 @@ import com.wolf89.wolf.core.entity.Refer;
 import com.wolf89.wolf.core.entity.Type;
 import com.wolf89.wolf.core.entity.Value;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -16,6 +14,7 @@ import java.util.List;
  *
  * @author gaoweibing
  */
+@MappedSuperclass
 public abstract class Article extends AbstractEntity {
 
     @EntityInfo(name = "标题", value = "title")
@@ -31,6 +30,7 @@ public abstract class Article extends AbstractEntity {
             @AttributeOverride(name = "code", column = @Column(name = "a_type_code")),
             @AttributeOverride(name = "name", column = @Column(name = "a_type_name"))
     })
+    @Embedded
     private Type type;
 
     @EntityInfo(name = "作者", value = "author")
@@ -39,6 +39,7 @@ public abstract class Article extends AbstractEntity {
             @AttributeOverride(name = "code", column = @Column(name = "a_author_code")),
             @AttributeOverride(name = "name", column = @Column(name = "a_author_name"))
     })
+    @Embedded
     private Refer author;
 
     @EntityInfo(name = "栏目", value = "column")
@@ -47,11 +48,13 @@ public abstract class Article extends AbstractEntity {
             @AttributeOverride(name = "code", column = @Column(name = "a_column_code")),
             @AttributeOverride(name = "name", column = @Column(name = "a_column_name"))
     })
+    @Embedded
     private Refer column;
 
     @org.hibernate.annotations.Type(type = "jsonb")
     @Column(name = "a_tags")
     @EntityInfo(name = "标签", value = "tags", clazz = "java.util.List")
+    @Embedded
     private List<Value> tags;
 
     @EntityInfo(name = "内容", value = "content")
@@ -74,7 +77,7 @@ public abstract class Article extends AbstractEntity {
      * </pre>
      */
     @EntityInfo(name = "状态", value = "control")
-    @Column(name = "a_control", columnDefinition = "int2")
+    @Column(name = "a_control", columnDefinition = "int2 default 1")
     private int control;
 
     /**

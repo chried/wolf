@@ -2,7 +2,6 @@ package com.wolf89.wolf.core.entity;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
 
-import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
@@ -10,7 +9,6 @@ import java.io.Serializable;
  *
  * @author chried
  */
-@MappedSuperclass
 public class Type implements Serializable {
 
     /**

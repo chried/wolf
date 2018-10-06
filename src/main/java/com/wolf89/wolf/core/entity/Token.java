@@ -1,59 +1,33 @@
-package com.wolf89.wolf.dto.user;
+package com.wolf89.wolf.core.entity;
 
 import com.wolf89.wolf.core.annotation.EntityInfo;
-import com.wolf89.wolf.core.entity.Refer;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
- * 登录成功之后返回的结构.
- *
- * @author gaoweibing
+ * 令牌.
  */
-public class LoginResult implements Serializable {
+public final class Token implements Serializable {
 
     /**
-     * 令牌.
+     * 设置token.
      */
-    @EntityInfo(name = "令牌", value = "token")
+    public static String TOKEN = "w-token";
+
+    @EntityInfo(name = "token", value = "token")
     private String token;
 
-    /**
-     * 用户.
-     */
     @EntityInfo(name = "用户", value = "user")
     private Refer user;
 
-    /**
-     * 昵称.
-     */
     @EntityInfo(name = "昵称", value = "nickname")
     private String nickname;
 
-    /**
-     * 头像.
-     */
     @EntityInfo(name = "头像", value = "portrait")
     private String portrait;
 
-    /**
-     * 签名.
-     */
     @EntityInfo(name = "签名", value = "signature")
     private String signature;
-
-    /**
-     * 角色.
-     */
-    @EntityInfo(name = "角色", value = "roles")
-    private List<Refer> roles;
-
-    /**
-     * 跳转地址.
-     */
-    @EntityInfo(name = "跳转地址", value = "direction")
-    private String direction;
 
     /**
      * Gets the value of token.
@@ -91,44 +65,6 @@ public class LoginResult implements Serializable {
      */
     public void setUser(Refer user) {
         this.user = user;
-    }
-
-    /**
-     * Gets the value of roles.
-     *
-     * @return the value of roles.
-     */
-    public List<Refer> getRoles() {
-        return roles;
-    }
-
-    /**
-     * Sets the roles.
-     * <p>You can use getRoles() to get the value of roles.</p>
-     *
-     * @param roles roles.
-     */
-    public void setRoles(List<Refer> roles) {
-        this.roles = roles;
-    }
-
-    /**
-     * Gets the value of direction.
-     *
-     * @return the value of direction.
-     */
-    public String getDirection() {
-        return direction;
-    }
-
-    /**
-     * Sets the direction.
-     * <p>You can use getDirection() to get the value of direction.</p>
-     *
-     * @param direction direction.
-     */
-    public void setDirection(String direction) {
-        this.direction = direction;
     }
 
     /**

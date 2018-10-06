@@ -2,7 +2,7 @@ package com.wolf89.wolf.core.service;
 
 import com.wolf89.wolf.core.entity.Refer;
 import com.wolf89.wolf.core.output.ApiOutput;
-import com.wolf89.wolf.model.entity.system.AbstractClassifyEntity;
+import com.wolf89.wolf.core.entity.AbstractClassifyEntity;
 
 import java.util.List;
 

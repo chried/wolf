@@ -1,6 +1,7 @@
 package com.wolf89.wolf.service.user.impl;
 
 import com.wolf89.wolf.core.entity.Refer;
+import com.wolf89.wolf.core.entity.Token;
 import com.wolf89.wolf.core.output.ApiOutput;
 import com.wolf89.wolf.core.service.AbstractServiceImpl;
 import com.wolf89.wolf.dto.user.LoginForm;
@@ -106,7 +107,6 @@ public class LoginServiceImpl extends AbstractServiceImpl implements LoginServic
         this.sLoginErrorEntityService.deleteByUserId(userEntity.getId());
 
         // 查询详情.
-
         UUserDetailEntity uUserDetailEntity = this.uUserDetailEntityService.get_(userEntity.getId());
 
         Refer userRefer = new Refer();
@@ -124,6 +124,9 @@ public class LoginServiceImpl extends AbstractServiceImpl implements LoginServic
         userRefer.setCode(userEntity.getCode());
 
         loginResult.setUser(userRefer);
+        loginResult.setNickname(uUserDetailEntity.getNickname());
+        loginResult.setPortrait(uUserDetailEntity.getPortrait());
+        loginResult.setSignature(uUserDetailEntity.getSignature());
 
         // 获取角色信息.
         List<URoleEntity> uRoleEntityList = this.uRoleEntityService.queryByUserId_(userEntity.getId());
@@ -139,4 +142,5 @@ public class LoginServiceImpl extends AbstractServiceImpl implements LoginServic
 
         return ApiOutput.of(loginResult);
     }
+
 }

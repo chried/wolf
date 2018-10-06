@@ -2,6 +2,7 @@ package com.wolf89.wolf.model.cache;
 
 import com.wolf89.wolf.core.annotation.CacheInfo;
 import com.wolf89.wolf.core.cache.AbstractCache;
+import com.wolf89.wolf.core.entity.Refer;
 import org.springframework.data.redis.core.RedisHash;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,11 @@ public class STokenCache extends AbstractCache {
     @CacheInfo(name = "令牌", value = "token")
     private String token;
 
+    /**
+     * 用户.
+     */
+    @CacheInfo(name = "用户", value = "user")
+    private Refer user;
     /**
      * 过期时间.
      */

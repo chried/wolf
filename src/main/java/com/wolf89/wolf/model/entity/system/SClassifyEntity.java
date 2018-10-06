@@ -1,5 +1,7 @@
 package com.wolf89.wolf.model.entity.system;
 
+import com.wolf89.wolf.core.entity.AbstractClassifyEntity;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;

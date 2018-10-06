@@ -1,6 +1,7 @@
 package com.wolf89.wolf.core.controller;
 
 
+import com.wolf89.wolf.core.entity.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,5 +25,17 @@ public abstract class AbstractController {
      */
     @Autowired
     protected HttpServletResponse response;
+
+
+    /**
+     * 获取当前活动token.
+     *
+     * @return
+     */
+    protected Token getCurrentToken_() {
+
+        return (Token) this.request.getSession().getAttribute(Token.TOKEN);
+
+    }
 
 }

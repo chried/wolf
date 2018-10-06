@@ -3,7 +3,7 @@ package com.wolf89.wolf.core.service;
 import com.wolf89.wolf.core.dao.AbstractClassifyEntityRepository;
 import com.wolf89.wolf.core.entity.Refer;
 import com.wolf89.wolf.core.output.ApiOutput;
-import com.wolf89.wolf.model.entity.system.AbstractClassifyEntity;
+import com.wolf89.wolf.core.entity.AbstractClassifyEntity;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ValidationException;

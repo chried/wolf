@@ -185,4 +185,13 @@ public class UUserEntity extends AbstractEntity {
     public void setCode(String code) {
         this.code = code;
     }
+
+    /**
+     * 转refer.
+     *
+     * @return
+     */
+    public Refer toRefer() {
+        return new Refer(this.getId(), this.code, this.username);
+    }
 }
